@@ -16,16 +16,10 @@ import com.arellomobile.mvp.MvpView;
  * @author Yuri Shmakov
  */
 @InjectViewState
-public class HomePresenter<T extends MvpView> extends SuperPresenter<SignOutView, T> implements Retryable<ErrorWrapper<String>>
+public class HomePresenter extends MvpPresenter<HomeView>
 {
 	public void onRepositorySelection(int position, Repository repository)
 	{
-		//getViewState().showDetails(position, repository);
-	}
-
-	@Override
-	public void onRetry(ErrorWrapper<String> stringErrorWrapper)
-	{
-		Log.i("fsd", "Sdf");
+		getViewState().showDetails(position, repository);
 	}
 }
