@@ -2,7 +2,6 @@ package com.arellomobile.github.mvp.views;
 
 import java.util.List;
 
-import com.arellomobile.mvp.GenerateViewState;
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
@@ -13,7 +12,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
  *
  * @author Yuri Shmakov
  */
-@GenerateViewState
 public interface RepositoryLikesView extends MvpView
 {
 	@StateStrategyType(AddToEndSingleStrategy.class)

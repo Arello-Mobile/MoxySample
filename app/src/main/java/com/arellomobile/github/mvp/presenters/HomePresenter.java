@@ -1,13 +1,9 @@
 package com.arellomobile.github.mvp.presenters;
 
-import android.util.Log;
-
 import com.arellomobile.github.mvp.models.Repository;
-import com.arellomobile.github.mvp.views.ErrorWrapper;
-import com.arellomobile.github.mvp.views.Retryable;
-import com.arellomobile.github.mvp.views.SignOutView;
+import com.arellomobile.github.mvp.views.HomeView;
 import com.arellomobile.mvp.InjectViewState;
-import com.arellomobile.mvp.MvpView;
+import com.arellomobile.mvp.MvpPresenter;
 
 /**
  * Date: 27.01.2016

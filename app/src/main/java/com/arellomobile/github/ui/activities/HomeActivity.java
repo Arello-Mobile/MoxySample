@@ -21,16 +21,12 @@ import com.arellomobile.github.mvp.models.Repository;
 import com.arellomobile.github.mvp.presenters.HomePresenter;
 import com.arellomobile.github.mvp.presenters.RepositoriesPresenter;
 import com.arellomobile.github.mvp.presenters.SignOutPresenter;
-import com.arellomobile.github.mvp.views.ErrorWrapper;
 import com.arellomobile.github.mvp.views.HomeView;
 import com.arellomobile.github.mvp.views.RepositoriesView;
-import com.arellomobile.github.mvp.views.Retryable;
-import com.arellomobile.github.mvp.views.RetryableView;
 import com.arellomobile.github.mvp.views.SignOutView;
 import com.arellomobile.github.ui.adapters.RepositoriesAdapter;
 import com.arellomobile.github.ui.fragments.DetailsFragment;
 import com.arellomobile.github.ui.views.FrameSwipeRefreshLayout;
-import com.arellomobile.mvp.MvpPresenter;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import butterknife.Bind;
@@ -89,12 +85,6 @@ public class HomeActivity extends MvpAppCompatActivity implements SignOutView, R
 				.setTitle(R.string.app_name)
 				.setOnCancelListener(dialog -> mRepositoriesPresenter.closeError())
 				.create();
-	}
-
-	@Override
-	public <T extends MvpPresenter<? extends RetryableView<ErrorWrapper<String>>> & Retryable<ErrorWrapper<String>>, Z> void showError(T presenter, ErrorWrapper<String> stringErrorWrapper)
-	{
-
 	}
 
 	@Override

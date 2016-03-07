@@ -1,7 +1,7 @@
 package com.arellomobile.github.mvp.views;
 
 import com.arellomobile.github.mvp.models.Repository;
-import com.arellomobile.mvp.GenerateViewState;
+import com.arellomobile.mvp.MvpView;
 
 /**
  * Date: 27.01.2016
@@ -9,8 +9,7 @@ import com.arellomobile.mvp.GenerateViewState;
  *
  * @author Yuri Shmakov
  */
-@GenerateViewState
-public interface HomeView extends RetryableView<ErrorWrapper<String>>
+public interface HomeView extends MvpView
 {
 	void showDetails(int position, Repository repository);
 }
