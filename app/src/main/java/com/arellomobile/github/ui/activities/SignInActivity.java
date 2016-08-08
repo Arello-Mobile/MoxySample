@@ -85,7 +85,7 @@ public class SignInActivity extends MvpAppCompatActivity implements SignInView, 
 		toggleProgressVisibility(false);
 	}
 
-	public void toggleProgressVisibility(final boolean show)
+	private void toggleProgressVisibility(final boolean show)
 	{
 		mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
 		mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
@@ -121,8 +121,7 @@ public class SignInActivity extends MvpAppCompatActivity implements SignInView, 
 	public void successSignIn()
 	{
 		final Intent intent = new Intent(this, SplashActivity.class);
-		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
 
 		startActivity(intent);
 	}

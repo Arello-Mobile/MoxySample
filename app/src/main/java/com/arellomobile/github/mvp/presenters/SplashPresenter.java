@@ -18,9 +18,7 @@ public class SplashPresenter extends MvpPresenter<SplashView>
 {
 	public void checkAuthorized()
 	{
-		final Observable<String> getTokenObservable = Observable.create(subscriber -> {
-			subscriber.onNext(AuthUtils.getToken());
-		});
+		final Observable<String> getTokenObservable = Observable.create(subscriber -> subscriber.onNext(AuthUtils.getToken()));
 
 		getTokenObservable.subscribe(token -> {
 			for (SplashView splashView : getAttachedViews())

@@ -2,17 +2,13 @@ package com.arellomobile.github.mvp.presenters;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import com.arellomobile.github.app.GithubApp;
 import com.arellomobile.github.mvp.common.RxUtils;
-import com.arellomobile.github.mvp.events.RepositoriesLoadedEvent;
-import com.arellomobile.github.mvp.models.Repository;
 import com.arellomobile.github.mvp.views.RepositoryLikesView;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
-import com.squareup.otto.Subscribe;
 
 import rx.Observable;
 
@@ -36,7 +32,7 @@ public class RepositoryLikesPresenter extends MvpPresenter<RepositoryLikesView>
 
 		GithubApp.get().getBus().register(this);
 	}
-
+/*
 	@Subscribe
 	public void repositoriesLoaded(RepositoriesLoadedEvent repositoriesLoadedEvent)
 	{
@@ -63,7 +59,7 @@ public class RepositoryLikesPresenter extends MvpPresenter<RepositoryLikesView>
 
 		getViewState().updateLikes(mInProgress, mLikedIds);
 	}
-
+*/
 	public void toggleLike(int id)
 	{
 		if (mInProgress.contains(id))

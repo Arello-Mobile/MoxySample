@@ -15,7 +15,6 @@ public class MvpAppCompatFragment extends Fragment
 {
 	private MvpDelegate<? extends MvpAppCompatFragment> mMvpDelegate;
 
-	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -23,15 +22,32 @@ public class MvpAppCompatFragment extends Fragment
 		getMvpDelegate().onCreate(savedInstanceState);
 	}
 
+	public void onStart()
+	{
+		super.onStart();
+
+		getMvpDelegate().onAttach();
+	}
+
+	@Override
+	public void onDestroyView()
+	{
+		super.onDestroyView();
+
+		getMvpDelegate().onDetach();
+	}
+
 	@Override
 	public void onDestroy()
 	{
 		super.onDestroy();
 
-		getMvpDelegate().onDestroy();
+		if (isRemoving())
+		{
+			getMvpDelegate().onDestroy();
+		}
 	}
 
-	@Override
 	public void onSaveInstanceState(Bundle outState)
 	{
 		super.onSaveInstanceState(outState);
@@ -39,32 +55,13 @@ public class MvpAppCompatFragment extends Fragment
 		getMvpDelegate().onSaveInstanceState(outState);
 	}
 
-	@Override
-	public void onStart()
-	{
-		super.onStart();
-
-		getMvpDelegate().onStart();
-
-	}
-
-	@Override
-	public void onStop()
-	{
-		super.onStop();
-
-		getMvpDelegate().onStop();
-	}
-
-	/**
-	 * @return The {@link MvpDelegate} being used by this Fragment.
-	 */
 	public MvpDelegate getMvpDelegate()
 	{
 		if (mMvpDelegate == null)
 		{
 			mMvpDelegate = new MvpDelegate<>(this);
 		}
+
 		return mMvpDelegate;
 	}
 }

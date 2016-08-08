@@ -5,7 +5,6 @@ import java.util.List;
 import com.arellomobile.github.app.GithubApi;
 import com.arellomobile.github.app.GithubApp;
 import com.arellomobile.github.mvp.common.RxUtils;
-import com.arellomobile.github.mvp.events.RepositoriesLoadedEvent;
 import com.arellomobile.github.mvp.models.Repository;
 import com.arellomobile.github.mvp.views.RepositoriesView;
 import com.arellomobile.mvp.InjectViewState;
@@ -44,7 +43,7 @@ public class RepositoriesPresenter extends MvpPresenter<RepositoriesView>
 		loadData(1, false, isRefreshing);
 	}
 
-	void loadData(int page, boolean isPageLoading, boolean isRefreshing)
+	private void loadData(int page, boolean isPageLoading, boolean isRefreshing)
 	{
 		if (mIsInLoading)
 		{
@@ -80,7 +79,7 @@ public class RepositoriesPresenter extends MvpPresenter<RepositoriesView>
 
 	private void onLoadingSuccess(boolean isPageLoading, List<Repository> repositories)
 	{
-		GithubApp.get().getBus().post(new RepositoriesLoadedEvent(repositories));
+		//GithubApp.get().getBus().post(new RepositoriesLoadedEvent(repositories));
 
 		boolean maybeMore = repositories.size() >= GithubApi.PAGE_SIZE;
 		if (isPageLoading)

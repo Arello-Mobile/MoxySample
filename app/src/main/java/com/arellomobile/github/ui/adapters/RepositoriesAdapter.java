@@ -158,14 +158,14 @@ public class RepositoriesAdapter extends MvpBaseAdapter implements RepositoryLik
 		@Bind(R.id.item_repository_image_button_like)
 		ImageButton likeImageButton;
 
-		public RepositoryHolder(View view)
+		RepositoryHolder(View view)
 		{
 			this.view = view;
 
 			ButterKnife.bind(this, view);
 		}
 
-		public void bind(int position, Repository repository)
+		void bind(int position, Repository repository)
 		{
 			view.setBackgroundResource(position == mSelection ? R.color.colorAccent : android.R.color.transparent);
 

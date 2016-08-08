@@ -20,27 +20,9 @@ public class SplashActivity extends MvpAppCompatActivity implements SplashView
 
 		// By default view attaches to presenter in onStart() method,
 		// but we attach it manually for earlier check authorization state.
-		mSplashPresenter.attachView(this);
+		getMvpDelegate().onAttach();
 
 		mSplashPresenter.checkAuthorized();
-	}
-
-	@Override
-	protected void onNewIntent(Intent intent)
-	{
-		super.onNewIntent(intent);
-
-		mSplashPresenter.attachView(this);
-
-		mSplashPresenter.checkAuthorized();
-	}
-
-	@Override
-	protected void onDestroy()
-	{
-		super.onDestroy();
-
-		mSplashPresenter.detachView(this);
 	}
 
 	@Override

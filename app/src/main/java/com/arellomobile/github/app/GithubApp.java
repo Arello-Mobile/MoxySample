@@ -20,8 +20,6 @@ import retrofit2.Retrofit;
  */
 public class GithubApp extends MvpApplication
 {
-	public static final String GITHUB_TOKEN = "2b466afbaeb386f300d1e6be595c284c87ba5092";
-
 	private static GithubApp sInstance;
 	private GithubApi mApi;
 	private Bus mBus;
@@ -69,7 +67,7 @@ public class GithubApp extends MvpApplication
 		return mBus;
 	}
 
-	static class CustomFieldNamingPolicy implements FieldNamingStrategy
+	private static class CustomFieldNamingPolicy implements FieldNamingStrategy
 	{
 		@Override
 		public String translateName(Field field) {

@@ -28,7 +28,12 @@ public class MvpAppCompatActivity extends AppCompatActivity
 	{
 		super.onDestroy();
 
-		getMvpDelegate().onDestroy();
+		getMvpDelegate().onDetach();
+
+		if (isFinishing())
+		{
+			getMvpDelegate().onDestroy();
+		}
 	}
 
 
@@ -45,15 +50,7 @@ public class MvpAppCompatActivity extends AppCompatActivity
 	{
 		super.onStart();
 
-		getMvpDelegate().onStart();
-	}
-
-	@Override
-	protected void onStop()
-	{
-		super.onStop();
-
-		getMvpDelegate().onStop();
+		getMvpDelegate().onAttach();
 	}
 
 	/**
