@@ -11,54 +11,45 @@ import com.arellomobile.mvp.MvpDelegate;
  *
  * @author Yuri Shmakov
  */
-public class MvpAppCompatFragment extends Fragment
-{
+public class MvpAppCompatFragment extends Fragment {
 	private MvpDelegate<? extends MvpAppCompatFragment> mMvpDelegate;
 
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		getMvpDelegate().onCreate(savedInstanceState);
 	}
 
-	public void onStart()
-	{
+	public void onStart() {
 		super.onStart();
 
 		getMvpDelegate().onAttach();
 	}
 
 	@Override
-	public void onDestroyView()
-	{
+	public void onDestroyView() {
 		super.onDestroyView();
 
 		getMvpDelegate().onDetach();
 	}
 
 	@Override
-	public void onDestroy()
-	{
+	public void onDestroy() {
 		super.onDestroy();
 
-		if (isRemoving())
-		{
+		if (isRemoving()) {
 			getMvpDelegate().onDestroy();
 		}
 	}
 
-	public void onSaveInstanceState(Bundle outState)
-	{
+	public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 
 		getMvpDelegate().onSaveInstanceState(outState);
 	}
 
-	public MvpDelegate getMvpDelegate()
-	{
-		if (mMvpDelegate == null)
-		{
+	public MvpDelegate getMvpDelegate() {
+		if (mMvpDelegate == null) {
 			mMvpDelegate = new MvpDelegate<>(this);
 		}
 

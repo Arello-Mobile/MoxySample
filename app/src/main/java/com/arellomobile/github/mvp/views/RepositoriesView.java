@@ -15,8 +15,7 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
  * @author Yuri Shmakov
  */
 @StateStrategyType(AddToEndSingleStrategy.class)
-public interface RepositoriesView extends MvpView
-{
+public interface RepositoriesView extends MvpView {
 	void showError(String message);
 
 	void hideError();

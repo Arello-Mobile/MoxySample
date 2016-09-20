@@ -15,12 +15,10 @@ import com.j256.ormlite.table.DatabaseTable;
  * @author Yuri Shmakov
  */
 @DatabaseTable
-public class Repository implements Serializable
-{
+public class Repository implements Serializable {
 	private static final long serialVersionUID = -4994763529881200165L;
 
-	public static class Column
-	{
+	public static class Column {
 		public static final String ID = "_id";
 		public static final String NAME = "name";
 		public static final String FULL_NAME = "full_name";
@@ -109,273 +107,219 @@ public class Repository implements Serializable
 	@DatabaseField(columnName = Column.DEFAULT_BRANCH)
 	private String mDefaultBranch;
 
-	public int getId()
-	{
+	public int getId() {
 		return mId;
 	}
 
-	public void setId(int id)
-	{
+	public void setId(int id) {
 		mId = id;
 	}
 
-	public String getName()
-	{
+	public String getName() {
 		return mName;
 	}
 
-	public void setName(String name)
-	{
+	public void setName(String name) {
 		mName = name;
 	}
 
-	public String getFullName()
-	{
+	public String getFullName() {
 		return mFullName;
 	}
 
-	public void setFullName(String fullName)
-	{
+	public void setFullName(String fullName) {
 		mFullName = fullName;
 	}
 
-	public String getDesc()
-	{
+	public String getDesc() {
 		return mDesc;
 	}
 
-	public void setDesc(String desc)
-	{
+	public void setDesc(String desc) {
 		mDesc = desc;
 	}
 
-	public String getUrl()
-	{
+	public String getUrl() {
 		return mUrl;
 	}
 
-	public void setUrl(String url)
-	{
+	public void setUrl(String url) {
 		mUrl = url;
 	}
 
-	public String getHtmlUrl()
-	{
+	public String getHtmlUrl() {
 		return mHtmlUrl;
 	}
 
-	public void setHtmlUrl(String htmlUrl)
-	{
+	public void setHtmlUrl(String htmlUrl) {
 		mHtmlUrl = htmlUrl;
 	}
 
-	public User getOwner()
-	{
+	public User getOwner() {
 		return mOwner;
 	}
 
-	public void setOwner(User owner)
-	{
+	public void setOwner(User owner) {
 		mOwner = owner;
 	}
 
-	public String isFork()
-	{
+	public String isFork() {
 		return mIsFork;
 	}
 
-	public void setIsFork(String isFork)
-	{
+	public void setIsFork(String isFork) {
 		mIsFork = isFork;
 	}
 
-	public String getIsPrivate()
-	{
+	public String getIsPrivate() {
 		return mIsPrivate;
 	}
 
-	public void setIsPrivate(String isPrivate)
-	{
+	public void setIsPrivate(String isPrivate) {
 		mIsPrivate = isPrivate;
 	}
 
-	public Date getCreatedAt()
-	{
+	public Date getCreatedAt() {
 		return mCreatedAt;
 	}
 
-	public void setCreatedAt(Date createdAt)
-	{
+	public void setCreatedAt(Date createdAt) {
 		mCreatedAt = createdAt;
 	}
 
-	public Date getUpdatedAt()
-	{
+	public Date getUpdatedAt() {
 		return mUpdatedAt;
 	}
 
-	public void setUpdatedAt(Date updatedAt)
-	{
+	public void setUpdatedAt(Date updatedAt) {
 		mUpdatedAt = updatedAt;
 	}
 
-	public Date getPushedAt()
-	{
+	public Date getPushedAt() {
 		return mPushedAt;
 	}
 
-	public void setPushedAt(Date pushedAt)
-	{
+	public void setPushedAt(Date pushedAt) {
 		mPushedAt = pushedAt;
 	}
 
-	public String getGitUrl()
-	{
+	public String getGitUrl() {
 		return mGitUrl;
 	}
 
-	public void setGitUrl(String gitUrl)
-	{
+	public void setGitUrl(String gitUrl) {
 		mGitUrl = gitUrl;
 	}
 
-	public String getSshUrl()
-	{
+	public String getSshUrl() {
 		return mSshUrl;
 	}
 
-	public void setSshUrl(String sshUrl)
-	{
+	public void setSshUrl(String sshUrl) {
 		mSshUrl = sshUrl;
 	}
 
-	public String getCloneUrl()
-	{
+	public String getCloneUrl() {
 		return mCloneUrl;
 	}
 
-	public void setCloneUrl(String cloneUrl)
-	{
+	public void setCloneUrl(String cloneUrl) {
 		mCloneUrl = cloneUrl;
 	}
 
-	public String getSvnUrl()
-	{
+	public String getSvnUrl() {
 		return mSvnUrl;
 	}
 
-	public void setSvnUrl(String svnUrl)
-	{
+	public void setSvnUrl(String svnUrl) {
 		mSvnUrl = svnUrl;
 	}
 
-	public String getHomepage()
-	{
+	public String getHomepage() {
 		return mHomepage;
 	}
 
-	public void setHomepage(String homepage)
-	{
+	public void setHomepage(String homepage) {
 		mHomepage = homepage;
 	}
 
-	public long getSize()
-	{
+	public long getSize() {
 		return mSize;
 	}
 
-	public void setSize(long size)
-	{
+	public void setSize(long size) {
 		mSize = size;
 	}
 
-	public int getStarsCount()
-	{
+	public int getStarsCount() {
 		return mStarsCount;
 	}
 
-	public void setStarsCount(int starsCount)
-	{
+	public void setStarsCount(int starsCount) {
 		mStarsCount = starsCount;
 	}
 
-	public int getWatchersCount()
-	{
+	public int getWatchersCount() {
 		return mWatchersCount;
 	}
 
-	public void setWatchersCount(int watchersCount)
-	{
+	public void setWatchersCount(int watchersCount) {
 		mWatchersCount = watchersCount;
 	}
 
-	public String getLanguage()
-	{
+	public String getLanguage() {
 		return mLanguage;
 	}
 
-	public void setLanguage(String language)
-	{
+	public void setLanguage(String language) {
 		mLanguage = language;
 	}
 
-	public boolean isHasIssues()
-	{
+	public boolean isHasIssues() {
 		return mHasIssues;
 	}
 
-	public void setHasIssues(boolean hasIssues)
-	{
+	public void setHasIssues(boolean hasIssues) {
 		mHasIssues = hasIssues;
 	}
 
-	public boolean isHasDownloads()
-	{
+	public boolean isHasDownloads() {
 		return mHasDownloads;
 	}
 
-	public void setHasDownloads(boolean hasDownloads)
-	{
+	public void setHasDownloads(boolean hasDownloads) {
 		mHasDownloads = hasDownloads;
 	}
 
-	public boolean isHasWiki()
-	{
+	public boolean isHasWiki() {
 		return mHasWiki;
 	}
 
-	public void setHasWiki(boolean hasWiki)
-	{
+	public void setHasWiki(boolean hasWiki) {
 		mHasWiki = hasWiki;
 	}
 
-	public int getForksCount()
-	{
+	public int getForksCount() {
 		return mForksCount;
 	}
 
-	public void setForksCount(int forksCount)
-	{
+	public void setForksCount(int forksCount) {
 		mForksCount = forksCount;
 	}
 
-	public int getOpenIssuesCount()
-	{
+	public int getOpenIssuesCount() {
 		return mOpenIssuesCount;
 	}
 
-	public void setOpenIssuesCount(int openIssuesCount)
-	{
+	public void setOpenIssuesCount(int openIssuesCount) {
 		mOpenIssuesCount = openIssuesCount;
 	}
 
-	public String getDefaultBranch()
-	{
+	public String getDefaultBranch() {
 		return mDefaultBranch;
 	}
 
-	public void setDefaultBranch(String defaultBranch)
-	{
+	public void setDefaultBranch(String defaultBranch) {
 		mDefaultBranch = defaultBranch;
 	}
 }

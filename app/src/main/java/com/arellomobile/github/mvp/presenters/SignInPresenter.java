@@ -22,10 +22,8 @@ import rx.Observable;
  * @author Yuri Shmakov
  */
 @InjectViewState
-public class SignInPresenter extends MvpPresenter<SignInView>
-{
-	public void signIn(String email, String password)
-	{
+public class SignInPresenter extends MvpPresenter<SignInView> {
+	public void signIn(String email, String password) {
 		final Resources resources = GithubApp.get().getResources();
 
 		String emailError = null;
@@ -33,18 +31,15 @@ public class SignInPresenter extends MvpPresenter<SignInView>
 
 		getViewState().showError(null, null);
 
-		if (TextUtils.isEmpty(email))
-		{
+		if (TextUtils.isEmpty(email)) {
 			emailError = resources.getString(R.string.error_field_required);
 		}
 
-		if (TextUtils.isEmpty(password))
-		{
+		if (TextUtils.isEmpty(password)) {
 			passwordError = resources.getString(R.string.error_invalid_password);
 		}
 
-		if (emailError != null || passwordError != null)
-		{
+		if (emailError != null || passwordError != null) {
 			getViewState().showError(emailError, passwordError);
 
 			return;
@@ -69,8 +64,7 @@ public class SignInPresenter extends MvpPresenter<SignInView>
 				});
 	}
 
-	public void onErrorCancel()
-	{
+	public void onErrorCancel() {
 		getViewState().hideError();
 	}
 }

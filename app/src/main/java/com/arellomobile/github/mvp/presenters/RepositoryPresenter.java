@@ -14,19 +14,16 @@ import com.arellomobile.mvp.MvpPresenter;
  * @author Yuri Shmakov
  */
 @InjectViewState
-public class RepositoryPresenter extends MvpPresenter<RepositoryView>
-{
+public class RepositoryPresenter extends MvpPresenter<RepositoryView> {
 	private boolean mIsFirstViewAttached = false;
 	private Repository mRepository;
 	private List<Integer> mInProgress;
 	private List<Integer> mLikedIds;
 
-	public void setRepository(Repository repository)
-	{
+	public void setRepository(Repository repository) {
 		mRepository = repository;
 
-		if (mIsFirstViewAttached)
-		{
+		if (mIsFirstViewAttached) {
 			getViewState().showRepository(repository);
 
 			updateLikes(mInProgress, mLikedIds);
@@ -34,8 +31,7 @@ public class RepositoryPresenter extends MvpPresenter<RepositoryView>
 	}
 
 	@Override
-	protected void onFirstViewAttach()
-	{
+	protected void onFirstViewAttach() {
 		super.onFirstViewAttach();
 
 		mIsFirstViewAttached = true;
@@ -43,13 +39,11 @@ public class RepositoryPresenter extends MvpPresenter<RepositoryView>
 		setRepository(mRepository);
 	}
 
-	public void updateLikes(List<Integer> inProgress, List<Integer> likedIds)
-	{
+	public void updateLikes(List<Integer> inProgress, List<Integer> likedIds) {
 		mInProgress = inProgress;
 		mLikedIds = likedIds;
 
-		if (mRepository == null || mInProgress == null || mLikedIds == null)
-		{
+		if (mRepository == null || mInProgress == null || mLikedIds == null) {
 			return;
 		}
 

@@ -19,51 +19,48 @@ import rx.Observable;
  * @author Yuri Shmakov
  */
 @InjectViewState
-public class RepositoryLikesPresenter extends MvpPresenter<RepositoryLikesView>
-{
+public class RepositoryLikesPresenter extends MvpPresenter<RepositoryLikesView> {
 	public static final String TAG = "RepositoryLikesPresenter";
 
 	private List<Integer> mInProgress = new ArrayList<>();
 	private List<Integer> mLikedIds = new ArrayList<>();
 
-	public RepositoryLikesPresenter()
-	{
+	public RepositoryLikesPresenter() {
 		super();
 
 		GithubApp.get().getBus().register(this);
 	}
-/*
-	@Subscribe
-	public void repositoriesLoaded(RepositoriesLoadedEvent repositoriesLoadedEvent)
-	{
-		final Random random = new Random();
 
-		for (Repository repository : repositoriesLoadedEvent.getRepositories())
+	/*
+		@Subscribe
+		public void repositoriesLoaded(RepositoriesLoadedEvent repositoriesLoadedEvent)
 		{
-			if (!mInProgress.contains(repository.getId()))
+			final Random random = new Random();
+
+			for (Repository repository : repositoriesLoadedEvent.getRepositories())
 			{
-				continue;
+				if (!mInProgress.contains(repository.getId()))
+				{
+					continue;
+				}
+
+				if (random.nextBoolean())
+				{
+					mLikedIds.add(repository.getId());
+				}
+				else
+				{
+					mLikedIds.remove(Integer.valueOf(repository.getId()));
+				}
+
+				mInProgress.remove(Integer.valueOf(repository.getId()));
 			}
 
-			if (random.nextBoolean())
-			{
-				mLikedIds.add(repository.getId());
-			}
-			else
-			{
-				mLikedIds.remove(Integer.valueOf(repository.getId()));
-			}
-
-			mInProgress.remove(Integer.valueOf(repository.getId()));
+			getViewState().updateLikes(mInProgress, mLikedIds);
 		}
-
-		getViewState().updateLikes(mInProgress, mLikedIds);
-	}
-*/
-	public void toggleLike(int id)
-	{
-		if (mInProgress.contains(id))
-		{
+	*/
+	public void toggleLike(int id) {
+		if (mInProgress.contains(id)) {
 			return;
 		}
 
@@ -72,12 +69,9 @@ public class RepositoryLikesPresenter extends MvpPresenter<RepositoryLikesView>
 		getViewState().updateLikes(mInProgress, mLikedIds);
 
 		final Observable<Boolean> toggleObservable = Observable.create(subscriber -> {
-			try
-			{
+			try {
 				TimeUnit.SECONDS.sleep(3);
-			}
-			catch (InterruptedException e)
-			{
+			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 
@@ -92,30 +86,23 @@ public class RepositoryLikesPresenter extends MvpPresenter<RepositoryLikesView>
 				});
 	}
 
-	private void onComplete(int id, Boolean isLiked)
-	{
-		if (!mInProgress.contains(id))
-		{
+	private void onComplete(int id, Boolean isLiked) {
+		if (!mInProgress.contains(id)) {
 			return;
 		}
 
 		mInProgress.remove(Integer.valueOf(id));
-		if (isLiked)
-		{
+		if (isLiked) {
 			mLikedIds.add(id);
-		}
-		else
-		{
+		} else {
 			mLikedIds.remove(Integer.valueOf(id));
 		}
 
 		getViewState().updateLikes(mInProgress, mLikedIds);
 	}
 
-	private void onFail(int id)
-	{
-		if (!mInProgress.contains(id))
-		{
+	private void onFail(int id) {
+		if (!mInProgress.contains(id)) {
 			return;
 		}
 
@@ -124,8 +111,7 @@ public class RepositoryLikesPresenter extends MvpPresenter<RepositoryLikesView>
 	}
 
 	@Override
-	public void onDestroy()
-	{
+	public void onDestroy() {
 		super.onDestroy();
 
 		GithubApp.get().getBus().unregister(this);

@@ -23,8 +23,7 @@ import butterknife.ButterKnife;
 /**
  * A login screen that offers login via email/password.
  */
-public class SignInActivity extends MvpAppCompatActivity implements SignInView, DialogInterface.OnCancelListener
-{
+public class SignInActivity extends MvpAppCompatActivity implements SignInView, DialogInterface.OnCancelListener {
 	@InjectPresenter
 	SignInPresenter mSignInPresenter;
 
@@ -44,16 +43,14 @@ public class SignInActivity extends MvpAppCompatActivity implements SignInView, 
 	private AlertDialog mErrorDialog;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sign_in);
 
 		ButterKnife.bind(this);
 
 		mPasswordView.setOnEditorActionListener((textView, id, keyEvent) -> {
-			if (id == R.id.login || id == EditorInfo.IME_NULL)
-			{
+			if (id == R.id.login || id == EditorInfo.IME_NULL) {
 				attemptLogin();
 				return true;
 			}
@@ -68,58 +65,49 @@ public class SignInActivity extends MvpAppCompatActivity implements SignInView, 
 				.create();
 	}
 
-	private void attemptLogin()
-	{
+	private void attemptLogin() {
 		mSignInPresenter.signIn(mEmailView.getText().toString(), mPasswordView.getText().toString());
 	}
 
 	@Override
-	public void showProgress()
-	{
+	public void showProgress() {
 		toggleProgressVisibility(true);
 	}
 
 	@Override
-	public void hideProgress()
-	{
+	public void hideProgress() {
 		toggleProgressVisibility(false);
 	}
 
-	private void toggleProgressVisibility(final boolean show)
-	{
+	private void toggleProgressVisibility(final boolean show) {
 		mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
 		mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
 	}
 
 	@Override
-	public void showError(String message)
-	{
+	public void showError(String message) {
 		mErrorDialog.setMessage(message);
 		mErrorDialog.show();
 	}
 
 	@Override
-	public void onCancel(DialogInterface dialog)
-	{
+	public void onCancel(DialogInterface dialog) {
 		mSignInPresenter.onErrorCancel();
 	}
 
 	@Override
-	public void hideError()
-	{
+	public void hideError() {
 		mErrorDialog.cancel();
 	}
 
 	@Override
-	public void showError(String emailError, String passwordError)
-	{
+	public void showError(String emailError, String passwordError) {
 		mEmailView.setError(emailError);
 		mPasswordView.setError(passwordError);
 	}
 
 	@Override
-	public void successSignIn()
-	{
+	public void successSignIn() {
 		final Intent intent = new Intent(this, SplashActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
 

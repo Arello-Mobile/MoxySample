@@ -8,7 +8,6 @@ import com.arellomobile.mvp.MvpView;
  *
  * @author Yuri Shmakov
  */
-public interface SignOutView extends MvpView
-{
+public interface SignOutView extends MvpView {
 	void signOut();
 }

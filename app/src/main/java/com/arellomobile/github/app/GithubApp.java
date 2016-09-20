@@ -18,20 +18,17 @@ import retrofit2.Retrofit;
  *
  * @author Yuri Shmakov
  */
-public class GithubApp extends MvpApplication
-{
+public class GithubApp extends MvpApplication {
 	private static GithubApp sInstance;
 	private GithubApi mApi;
 	private Bus mBus;
 
-	public GithubApp()
-	{
+	public GithubApp() {
 		sInstance = this;
 	}
 
 	@Override
-	public void onCreate()
-	{
+	public void onCreate() {
 		super.onCreate();
 
 		final Gson gson = new GsonBuilder()
@@ -52,23 +49,19 @@ public class GithubApp extends MvpApplication
 		mBus = new Bus();
 	}
 
-	public static GithubApp get()
-	{
+	public static GithubApp get() {
 		return sInstance;
 	}
 
-	public GithubApi getApi()
-	{
+	public GithubApi getApi() {
 		return mApi;
 	}
 
-	public Bus getBus()
-	{
+	public Bus getBus() {
 		return mBus;
 	}
 
-	private static class CustomFieldNamingPolicy implements FieldNamingStrategy
-	{
+	private static class CustomFieldNamingPolicy implements FieldNamingStrategy {
 		@Override
 		public String translateName(Field field) {
 			String name = FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES.translateName(field);

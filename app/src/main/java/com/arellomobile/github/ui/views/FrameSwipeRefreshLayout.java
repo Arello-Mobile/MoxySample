@@ -11,30 +11,24 @@ import android.widget.ListView;
  *
  * @author Yuri Shmakov
  */
-public class FrameSwipeRefreshLayout extends SwipeRefreshLayout
-{
+public class FrameSwipeRefreshLayout extends SwipeRefreshLayout {
 	private ListView mListViewChild;
 
-	public FrameSwipeRefreshLayout(Context context)
-	{
+	public FrameSwipeRefreshLayout(Context context) {
 		super(context);
 	}
 
-	public FrameSwipeRefreshLayout(Context context, AttributeSet attrs)
-	{
+	public FrameSwipeRefreshLayout(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
 
-	public void setListViewChild(ListView listViewChild)
-	{
+	public void setListViewChild(ListView listViewChild) {
 		mListViewChild = listViewChild;
 	}
 
 	@Override
-	public boolean canChildScrollUp()
-	{
-		if (mListViewChild != null && mListViewChild.getVisibility() == VISIBLE)
-		{
+	public boolean canChildScrollUp() {
+		if (mListViewChild != null && mListViewChild.getVisibility() == VISIBLE) {
 			return mListViewChild.canScrollVertically(-1);
 		}
 

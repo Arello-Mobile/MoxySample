@@ -27,8 +27,7 @@ import butterknife.ButterKnife;
  *
  * @author Yuri Shmakov
  */
-public class RepositoriesAdapter extends MvpBaseAdapter implements RepositoryLikesView
-{
+public class RepositoriesAdapter extends MvpBaseAdapter implements RepositoryLikesView {
 	public static final int REPOSITORY_VIEW_TYPE = 0;
 	public static final int PROGRESS_VIEW_TYPE = 1;
 
@@ -42,8 +41,7 @@ public class RepositoriesAdapter extends MvpBaseAdapter implements RepositoryLik
 	private boolean mMaybeMore;
 	private OnScrollToBottomListener mScrollToBottomListener;
 
-	public RepositoriesAdapter(MvpDelegate<?> parentDelegate, OnScrollToBottomListener scrollToBottomListener)
-	{
+	public RepositoriesAdapter(MvpDelegate<?> parentDelegate, OnScrollToBottomListener scrollToBottomListener) {
 		super(parentDelegate, String.valueOf(0));
 
 		mScrollToBottomListener = scrollToBottomListener;
@@ -52,82 +50,68 @@ public class RepositoriesAdapter extends MvpBaseAdapter implements RepositoryLik
 		mLikesInProgress = new ArrayList<>();
 	}
 
-	public void setRepositories(List<Repository> repositories, boolean maybeMore)
-	{
+	public void setRepositories(List<Repository> repositories, boolean maybeMore) {
 		mRepositories = new ArrayList<>(repositories);
 		dataSetChanged(maybeMore);
 	}
 
-	public void addRepositories(List<Repository> repositories, boolean maybeMore)
-	{
+	public void addRepositories(List<Repository> repositories, boolean maybeMore) {
 		mRepositories.addAll(repositories);
 		dataSetChanged(maybeMore);
 	}
 
-	public void updateLikes(List<Integer> inProgress, List<Integer> likedIds)
-	{
+	public void updateLikes(List<Integer> inProgress, List<Integer> likedIds) {
 		mLikesInProgress = new ArrayList<>(inProgress);
 		mLiked = new ArrayList<>(likedIds);
 
 		notifyDataSetChanged();
 	}
 
-	public void setSelection(int selection)
-	{
+	public void setSelection(int selection) {
 		mSelection = selection;
 
 		notifyDataSetChanged();
 	}
 
-	private void dataSetChanged(boolean maybeMore)
-	{
+	private void dataSetChanged(boolean maybeMore) {
 		mMaybeMore = maybeMore;
 
 		notifyDataSetChanged();
 	}
 
 	@Override
-	public int getItemViewType(int position)
-	{
+	public int getItemViewType(int position) {
 		return position == mRepositories.size() ? PROGRESS_VIEW_TYPE : REPOSITORY_VIEW_TYPE;
 	}
 
 	@Override
-	public int getViewTypeCount()
-	{
+	public int getViewTypeCount() {
 		return 2;
 	}
 
-	public int getRepositoriesCount()
-	{
+	public int getRepositoriesCount() {
 		return mRepositories.size();
 	}
 
 	@Override
-	public int getCount()
-	{
+	public int getCount() {
 		return mRepositories.size() + (mMaybeMore ? 1 : 0);
 	}
 
 	@Override
-	public Repository getItem(int position)
-	{
+	public Repository getItem(int position) {
 		return mRepositories.get(position);
 	}
 
 	@Override
-	public long getItemId(int position)
-	{
+	public long getItemId(int position) {
 		return getItem(position).getId();
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent)
-	{
-		if (getItemViewType(position) == PROGRESS_VIEW_TYPE)
-		{
-			if (mScrollToBottomListener != null)
-			{
+	public View getView(int position, View convertView, ViewGroup parent) {
+		if (getItemViewType(position) == PROGRESS_VIEW_TYPE) {
+			if (mScrollToBottomListener != null) {
 				mScrollToBottomListener.onScrollToBottom();
 			}
 
@@ -150,23 +134,20 @@ public class RepositoriesAdapter extends MvpBaseAdapter implements RepositoryLik
 		return convertView;
 	}
 
-	class RepositoryHolder
-	{
+	class RepositoryHolder {
 		View view;
 		@Bind(R.id.item_repository_text_view_name)
 		TextView nameTextView;
 		@Bind(R.id.item_repository_image_button_like)
 		ImageButton likeImageButton;
 
-		RepositoryHolder(View view)
-		{
+		RepositoryHolder(View view) {
 			this.view = view;
 
 			ButterKnife.bind(this, view);
 		}
 
-		void bind(int position, Repository repository)
-		{
+		void bind(int position, Repository repository) {
 			view.setBackgroundResource(position == mSelection ? R.color.colorAccent : android.R.color.transparent);
 
 			nameTextView.setText(repository.getName());
@@ -180,8 +161,7 @@ public class RepositoriesAdapter extends MvpBaseAdapter implements RepositoryLik
 		}
 	}
 
-	public interface OnScrollToBottomListener
-	{
+	public interface OnScrollToBottomListener {
 		void onScrollToBottom();
 	}
 }

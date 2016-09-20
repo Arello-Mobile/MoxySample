@@ -8,14 +8,12 @@ import com.arellomobile.github.mvp.presenters.SplashPresenter;
 import com.arellomobile.github.mvp.views.SplashView;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
-public class SplashActivity extends MvpAppCompatActivity implements SplashView
-{
+public class SplashActivity extends MvpAppCompatActivity implements SplashView {
 	@InjectPresenter
 	SplashPresenter mSplashPresenter;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		// By default view attaches to presenter in onStart() method,
@@ -26,14 +24,12 @@ public class SplashActivity extends MvpAppCompatActivity implements SplashView
 	}
 
 	@Override
-	public void setAuthorized(boolean isAuthorized)
-	{
+	public void setAuthorized(boolean isAuthorized) {
 		startActivityForResult(new Intent(this, isAuthorized ? HomeActivity.class : SignInActivity.class), 0);
 	}
 
 	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data)
-	{
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		finish();
 	}
 }

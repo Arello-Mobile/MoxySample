@@ -29,8 +29,7 @@ import butterknife.ButterKnife;
  *
  * @author Yuri Shmakov
  */
-public class DetailsFragment extends MvpAppCompatFragment implements RepositoryView, RepositoryLikesView
-{
+public class DetailsFragment extends MvpAppCompatFragment implements RepositoryView, RepositoryLikesView {
 	public static final String ARGS_REPOSITORY = "argsRepository";
 
 	@InjectPresenter
@@ -44,8 +43,7 @@ public class DetailsFragment extends MvpAppCompatFragment implements RepositoryV
 	ImageButton mLikeImageButton;
 	private Repository mRepository;
 
-	public static DetailsFragment getInstance(Repository repository)
-	{
+	public static DetailsFragment getInstance(Repository repository) {
 		DetailsFragment fragment = new DetailsFragment();
 
 		Bundle args = new Bundle();
@@ -57,26 +55,22 @@ public class DetailsFragment extends MvpAppCompatFragment implements RepositoryV
 	}
 
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		if (savedInstanceState == null)
-		{
+		if (savedInstanceState == null) {
 			mRepositoryPresenter.setRepository((Repository) getArguments().getSerializable(ARGS_REPOSITORY));
 		}
 	}
 
 	@Nullable
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.fragment_repository_details, container, false);
 	}
 
 	@Override
-	public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
-	{
+	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 
 		ButterKnife.bind(this, view);
@@ -84,28 +78,24 @@ public class DetailsFragment extends MvpAppCompatFragment implements RepositoryV
 		mLikeImageButton.setOnClickListener(likeImageButton -> mRepositoryLikesPresenter.toggleLike(mRepository.getId()));
 	}
 
-	public void setRepository(Repository repository)
-	{
+	public void setRepository(Repository repository) {
 		mRepositoryPresenter.setRepository(repository);
 	}
 
 	@Override
-	public void updateLikes(List<Integer> inProgress, List<Integer> likedIds)
-	{
+	public void updateLikes(List<Integer> inProgress, List<Integer> likedIds) {
 		mRepositoryPresenter.updateLikes(inProgress, likedIds);
 	}
 
 	@Override
-	public void showRepository(Repository repository)
-	{
+	public void showRepository(Repository repository) {
 		mRepository = repository;
 
 		mTitleTextView.setText(repository.getName());
 	}
 
 	@Override
-	public void updateLike(boolean isInProgress, boolean isLiked)
-	{
+	public void updateLike(boolean isInProgress, boolean isLiked) {
 		mLikeImageButton.setEnabled(!isInProgress);
 		mLikeImageButton.setSelected(isLiked);
 	}

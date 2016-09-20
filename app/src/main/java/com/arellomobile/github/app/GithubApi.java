@@ -18,8 +18,7 @@ import retrofit2.http.Query;
  *
  * @author Yuri Shmakov
  */
-public interface GithubApi
-{
+public interface GithubApi {
 	Integer PAGE_SIZE = 50;
 
 	@GET("/user")

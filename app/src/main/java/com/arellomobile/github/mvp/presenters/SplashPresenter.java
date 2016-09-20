@@ -14,15 +14,12 @@ import rx.Observable;
  *
  * @author Yuri Shmakov
  */
-public class SplashPresenter extends MvpPresenter<SplashView>
-{
-	public void checkAuthorized()
-	{
+public class SplashPresenter extends MvpPresenter<SplashView> {
+	public void checkAuthorized() {
 		final Observable<String> getTokenObservable = Observable.create(subscriber -> subscriber.onNext(AuthUtils.getToken()));
 
 		getTokenObservable.subscribe(token -> {
-			for (SplashView splashView : getAttachedViews())
-			{
+			for (SplashView splashView : getAttachedViews()) {
 				splashView.setAuthorized(!TextUtils.isEmpty(token));
 			}
 		});

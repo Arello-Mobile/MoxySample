@@ -12,8 +12,7 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
  *
  * @author Yuri Shmakov
  */
-public interface RepositoryLikesView extends MvpView
-{
+public interface RepositoryLikesView extends MvpView {
 	@StateStrategyType(AddToEndSingleStrategy.class)
 	void updateLikes(List<Integer> inProgress, List<Integer> likedIds);
 }

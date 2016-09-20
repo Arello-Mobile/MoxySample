@@ -13,21 +13,15 @@ import okhttp3.ResponseBody;
  *
  * @author Yuri Shmakov
  */
-public class GithubError extends Throwable
-{
-	public GithubError(ResponseBody responseBody)
-	{
+public class GithubError extends Throwable {
+	public GithubError(ResponseBody responseBody) {
 		super(getMessage(responseBody));
 	}
 
-	private static String getMessage(ResponseBody responseBody)
-	{
-		try
-		{
+	private static String getMessage(ResponseBody responseBody) {
+		try {
 			return new JSONObject(responseBody.string()).optString("message");
-		}
-		catch (JSONException | IOException e)
-		{
+		} catch (JSONException | IOException e) {
 			e.printStackTrace();
 		}
 

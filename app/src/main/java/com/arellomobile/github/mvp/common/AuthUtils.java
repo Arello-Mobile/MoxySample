@@ -6,8 +6,7 @@ package com.arellomobile.github.mvp.common;
  *
  * @author Yuri Shmakov
  */
-public class AuthUtils
-{
+public class AuthUtils {
 	private static final String TOKEN = "token";
 
 	public static String getToken() {

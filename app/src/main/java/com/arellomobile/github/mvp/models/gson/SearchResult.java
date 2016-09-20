@@ -10,14 +10,12 @@ import com.arellomobile.github.mvp.models.Repository;
  *
  * @author Yuri Shmakov
  */
-public class SearchResult
-{
+public class SearchResult {
 	private int mTotalCount;
 	private boolean mIncompleteResults;
 	private List<Repository> mItems;
 
-	public List<Repository> getRepositories()
-	{
+	public List<Repository> getRepositories() {
 		return mItems;
 	}
 }

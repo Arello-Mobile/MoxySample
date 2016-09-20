@@ -8,7 +8,6 @@ import com.arellomobile.mvp.MvpView;
  *
  * @author Yuri Shmakov
  */
-public interface SplashView extends MvpView
-{
+public interface SplashView extends MvpView {
 	void setAuthorized(boolean isAuthorized);
 }

@@ -13,46 +13,38 @@ import android.widget.Checkable;
  *
  * @author Yuri Shmakov
  */
-public class LikeButton extends Button implements Checkable
-{
+public class LikeButton extends Button implements Checkable {
 	private boolean mChecked;
 
-	public LikeButton(Context context)
-	{
+	public LikeButton(Context context) {
 		super(context);
 	}
 
-	public LikeButton(Context context, AttributeSet attrs)
-	{
+	public LikeButton(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
 
-	public LikeButton(Context context, AttributeSet attrs, int defStyleAttr)
-	{
+	public LikeButton(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
 	}
 
 	@TargetApi(Build.VERSION_CODES.LOLLIPOP)
-	public LikeButton(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes)
-	{
+	public LikeButton(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
 		super(context, attrs, defStyleAttr, defStyleRes);
 	}
 
 	@Override
-	public void setChecked(boolean checked)
-	{
+	public void setChecked(boolean checked) {
 		mChecked = checked;
 	}
 
 	@Override
-	public boolean isChecked()
-	{
+	public boolean isChecked() {
 		return mChecked;
 	}
 
 	@Override
-	public void toggle()
-	{
+	public void toggle() {
 		mChecked = !mChecked;
 	}
 }

@@ -17,41 +17,31 @@ import rx.schedulers.Schedulers;
  *
  * @author Yuri Shmakov
  */
-public class RxUtils
-{
-	public static <T> Observable<T> wrapRetrofitCall(final Call<T> call)
-	{
+public class RxUtils {
+	public static <T> Observable<T> wrapRetrofitCall(final Call<T> call) {
 		return Observable.create(subscriber ->
 		{
 			final Response<T> execute;
-			try
-			{
+			try {
 				execute = call.execute();
-			}
-			catch (IOException e)
-			{
+			} catch (IOException e) {
 				subscriber.onError(e);
 				return;
 			}
 
-			if (execute.isSuccess())
-			{
+			if (execute.isSuccess()) {
 				subscriber.onNext(execute.body());
-			}
-			else
-			{
+			} else {
 				subscriber.onError(new GithubError(execute.errorBody()));
 			}
 		});
 	}
 
-	public static <T> Observable<T> wrapAsync(Observable<T> observable)
-	{
+	public static <T> Observable<T> wrapAsync(Observable<T> observable) {
 		return wrapAsync(observable, Schedulers.io());
 	}
 
-	public static <T> Observable<T> wrapAsync(Observable<T> observable, Scheduler scheduler)
-	{
+	public static <T> Observable<T> wrapAsync(Observable<T> observable, Scheduler scheduler) {
 		return observable
 				.subscribeOn(scheduler)
 				.observeOn(AndroidSchedulers.mainThread());

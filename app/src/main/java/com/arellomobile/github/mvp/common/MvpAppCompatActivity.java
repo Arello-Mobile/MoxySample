@@ -11,43 +11,37 @@ import com.arellomobile.mvp.MvpDelegate;
  *
  * @author Yuri Shmakov
  */
-public class MvpAppCompatActivity extends AppCompatActivity
-{
+public class MvpAppCompatActivity extends AppCompatActivity {
 	private MvpDelegate<? extends MvpAppCompatActivity> mMvpDelegate;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		getMvpDelegate().onCreate(savedInstanceState);
 	}
 
 	@Override
-	protected void onDestroy()
-	{
+	protected void onDestroy() {
 		super.onDestroy();
 
 		getMvpDelegate().onDetach();
 
-		if (isFinishing())
-		{
+		if (isFinishing()) {
 			getMvpDelegate().onDestroy();
 		}
 	}
 
 
 	@Override
-	protected void onSaveInstanceState(Bundle outState)
-	{
+	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 
 		getMvpDelegate().onSaveInstanceState(outState);
 	}
 
 	@Override
-	protected void onStart()
-	{
+	protected void onStart() {
 		super.onStart();
 
 		getMvpDelegate().onAttach();
@@ -56,10 +50,8 @@ public class MvpAppCompatActivity extends AppCompatActivity
 	/**
 	 * @return The {@link MvpDelegate} being used by this Activity.
 	 */
-	public MvpDelegate getMvpDelegate()
-	{
-		if (mMvpDelegate == null)
-		{
+	public MvpDelegate getMvpDelegate() {
+		if (mMvpDelegate == null) {
 			mMvpDelegate = new MvpDelegate<>(this);
 		}
 		return mMvpDelegate;

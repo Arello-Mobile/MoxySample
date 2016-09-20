@@ -12,10 +12,8 @@ import com.arellomobile.mvp.MvpPresenter;
  * @author Yuri Shmakov
  */
 @InjectViewState
-public class SignOutPresenter extends MvpPresenter<SignOutView>
-{
-	public void signOut()
-	{
+public class SignOutPresenter extends MvpPresenter<SignOutView> {
+	public void signOut() {
 		AuthUtils.setToken("");
 
 		getViewState().signOut();

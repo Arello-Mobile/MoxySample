@@ -9,7 +9,6 @@ import com.arellomobile.mvp.MvpView;
  *
  * @author Yuri Shmakov
  */
-public interface HomeView extends MvpView
-{
+public interface HomeView extends MvpView {
 	void showDetails(int position, Repository repository);
 }

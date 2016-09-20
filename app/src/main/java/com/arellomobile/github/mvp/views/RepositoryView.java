@@ -9,8 +9,7 @@ import com.arellomobile.mvp.MvpView;
  *
  * @author Yuri Shmakov
  */
-public interface RepositoryView extends MvpView
-{
+public interface RepositoryView extends MvpView {
 	void showRepository(Repository repository);
 
 	void updateLike(boolean isInProgress, boolean isLiked);

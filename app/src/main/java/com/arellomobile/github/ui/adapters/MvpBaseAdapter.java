@@ -10,24 +10,20 @@ import com.arellomobile.mvp.MvpDelegate;
  *
  * @author Yuri Shmakov
  */
-public abstract class MvpBaseAdapter extends BaseAdapter
-{
+public abstract class MvpBaseAdapter extends BaseAdapter {
 	private MvpDelegate<? extends MvpBaseAdapter> mMvpDelegate;
 	private MvpDelegate<?> mParentDelegate;
 	private String mChildId;
 
-	public MvpBaseAdapter(MvpDelegate<?> parentDelegate, String childId)
-	{
+	public MvpBaseAdapter(MvpDelegate<?> parentDelegate, String childId) {
 		mParentDelegate = parentDelegate;
 		mChildId = childId;
 
 		getMvpDelegate().onCreate();
 	}
 
-	public MvpDelegate getMvpDelegate()
-	{
-		if (mMvpDelegate == null)
-		{
+	public MvpDelegate getMvpDelegate() {
+		if (mMvpDelegate == null) {
 			mMvpDelegate = new MvpDelegate<>(this);
 			mMvpDelegate.setParentDelegate(mParentDelegate, mChildId);
 

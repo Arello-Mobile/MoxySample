@@ -11,8 +11,7 @@ import com.arellomobile.github.app.GithubApp;
  *
  * @author Yuri Shmakov
  */
-public class PrefUtils
-{
+public class PrefUtils {
 	private static final String PREF_NAME = "github";
 
 	public static SharedPreferences getPrefs() {

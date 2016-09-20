@@ -12,8 +12,7 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
  * @author Yuri Shmakov
  */
 @StateStrategyType(AddToEndSingleStrategy.class)
-public interface SignInView extends MvpView
-{
+public interface SignInView extends MvpView {
 	void showProgress();
 
 	void hideProgress();

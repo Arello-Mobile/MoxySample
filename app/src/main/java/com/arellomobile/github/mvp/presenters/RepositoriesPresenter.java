@@ -19,34 +19,28 @@ import rx.Observable;
  * @author Yuri Shmakov
  */
 @InjectViewState
-public class RepositoriesPresenter extends MvpPresenter<RepositoriesView>
-{
+public class RepositoriesPresenter extends MvpPresenter<RepositoriesView> {
 	private boolean mIsInLoading;
 
 	@Override
-	protected void onFirstViewAttach()
-	{
+	protected void onFirstViewAttach() {
 		super.onFirstViewAttach();
 
 		loadRepositories(false);
 	}
 
-	public void loadNextRepositories(int currentCount)
-	{
+	public void loadNextRepositories(int currentCount) {
 		int page = currentCount / GithubApi.PAGE_SIZE + 1;
 
 		loadData(page, true, false);
 	}
 
-	public void loadRepositories(boolean isRefreshing)
-	{
+	public void loadRepositories(boolean isRefreshing) {
 		loadData(1, false, isRefreshing);
 	}
 
-	private void loadData(int page, boolean isPageLoading, boolean isRefreshing)
-	{
-		if (mIsInLoading)
-		{
+	private void loadData(int page, boolean isPageLoading, boolean isRefreshing) {
+		if (mIsInLoading) {
 			return;
 		}
 		mIsInLoading = true;
@@ -68,8 +62,7 @@ public class RepositoriesPresenter extends MvpPresenter<RepositoriesView>
 				});
 	}
 
-	private void onLoadingFinish(boolean isPageLoading, boolean isRefreshing)
-	{
+	private void onLoadingFinish(boolean isPageLoading, boolean isRefreshing) {
 		mIsInLoading = false;
 
 		getViewState().onFinishLoading();
@@ -77,62 +70,46 @@ public class RepositoriesPresenter extends MvpPresenter<RepositoriesView>
 		hideProgress(isPageLoading, isRefreshing);
 	}
 
-	private void onLoadingSuccess(boolean isPageLoading, List<Repository> repositories)
-	{
+	private void onLoadingSuccess(boolean isPageLoading, List<Repository> repositories) {
 		//GithubApp.get().getBus().post(new RepositoriesLoadedEvent(repositories));
 
 		boolean maybeMore = repositories.size() >= GithubApi.PAGE_SIZE;
-		if (isPageLoading)
-		{
+		if (isPageLoading) {
 			getViewState().addRepositories(repositories, maybeMore);
-		}
-		else
-		{
+		} else {
 			getViewState().setRepositories(repositories, maybeMore);
 		}
 	}
 
-	private void onLoadingFailed(Throwable error)
-	{
+	private void onLoadingFailed(Throwable error) {
 		getViewState().showError(error.toString());
 	}
 
-	private void showProgress(boolean isPageLoading, boolean isRefreshing)
-	{
-		if (isPageLoading)
-		{
+	private void showProgress(boolean isPageLoading, boolean isRefreshing) {
+		if (isPageLoading) {
 			return;
 		}
 
-		if (isRefreshing)
-		{
+		if (isRefreshing) {
 			getViewState().showRefreshing();
-		}
-		else
-		{
+		} else {
 			getViewState().showListProgress();
 		}
 	}
 
-	private void hideProgress(boolean isPageLoading, boolean isRefreshing)
-	{
-		if (isPageLoading)
-		{
+	private void hideProgress(boolean isPageLoading, boolean isRefreshing) {
+		if (isPageLoading) {
 			return;
 		}
 
-		if (isRefreshing)
-		{
+		if (isRefreshing) {
 			getViewState().hideRefreshing();
-		}
-		else
-		{
+		} else {
 			getViewState().hideListProgress();
 		}
 	}
 
-	public void closeError()
-	{
+	public void closeError() {
 		getViewState().hideError();
 	}
 }
