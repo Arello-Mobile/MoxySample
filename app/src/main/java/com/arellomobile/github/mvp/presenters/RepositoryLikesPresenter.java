@@ -9,6 +9,9 @@ import com.arellomobile.github.mvp.common.RxUtils;
 import com.arellomobile.github.mvp.views.RepositoryLikesView;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
+import com.squareup.otto.Bus;
+
+import javax.inject.Inject;
 
 import rx.Observable;
 
@@ -22,16 +25,20 @@ import rx.Observable;
 public class RepositoryLikesPresenter extends MvpPresenter<RepositoryLikesView> {
 	public static final String TAG = "RepositoryLikesPresenter";
 
+	@Inject
+	Bus mBus;
+
 	private List<Integer> mInProgress = new ArrayList<>();
 	private List<Integer> mLikedIds = new ArrayList<>();
 
 	public RepositoryLikesPresenter() {
-		super();
+		GithubApp.getAppComponent().inject(this);
 
-		GithubApp.get().getBus().register(this);
+		mBus.register(this);
 	}
 
 	/*
+		// Lice random repositories
 		@Subscribe
 		public void repositoriesLoaded(RepositoriesLoadedEvent repositoriesLoadedEvent)
 		{
@@ -114,6 +121,6 @@ public class RepositoryLikesPresenter extends MvpPresenter<RepositoryLikesView> 
 	public void onDestroy() {
 		super.onDestroy();
 
-		GithubApp.get().getBus().unregister(this);
+		mBus.unregister(this);
 	}
 }

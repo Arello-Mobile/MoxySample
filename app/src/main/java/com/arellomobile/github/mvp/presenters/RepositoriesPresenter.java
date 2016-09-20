@@ -4,11 +4,14 @@ import java.util.List;
 
 import com.arellomobile.github.app.GithubApi;
 import com.arellomobile.github.app.GithubApp;
+import com.arellomobile.github.mvp.GithubService;
 import com.arellomobile.github.mvp.common.RxUtils;
 import com.arellomobile.github.mvp.models.Repository;
 import com.arellomobile.github.mvp.views.RepositoriesView;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
+
+import javax.inject.Inject;
 
 import rx.Observable;
 
@@ -20,11 +23,14 @@ import rx.Observable;
  */
 @InjectViewState
 public class RepositoriesPresenter extends MvpPresenter<RepositoriesView> {
+
+	@Inject
+	GithubService mGithubService;
+
 	private boolean mIsInLoading;
 
-	@Override
-	protected void onFirstViewAttach() {
-		super.onFirstViewAttach();
+	public RepositoriesPresenter() {
+		GithubApp.getAppComponent().inject(this);
 
 		loadRepositories(false);
 	}
@@ -50,7 +56,7 @@ public class RepositoriesPresenter extends MvpPresenter<RepositoriesView> {
 
 		showProgress(isPageLoading, isRefreshing);
 
-		final Observable<List<Repository>> observable = RxUtils.wrapRetrofitCall(GithubApp.get().getApi().getUserRepos("JakeWharton", page, GithubApi.PAGE_SIZE));
+		final Observable<List<Repository>> observable = RxUtils.wrapRetrofitCall(mGithubService.getUserRepos("JakeWharton", page, GithubApi.PAGE_SIZE));
 
 		RxUtils.wrapAsync(observable)
 				.subscribe(repositories -> {

@@ -101,9 +101,13 @@ public class SignInActivity extends MvpAppCompatActivity implements SignInView, 
 	}
 
 	@Override
-	public void showError(String emailError, String passwordError) {
-		mEmailView.setError(emailError);
-		mPasswordView.setError(passwordError);
+	public void showError(Integer emailError, Integer passwordError) {
+		if (emailError != null) {
+			mEmailView.setError(getString(emailError));
+		}
+		if (passwordError != null) {
+			mPasswordView.setError(getString(passwordError));
+		}
 	}
 
 	@Override

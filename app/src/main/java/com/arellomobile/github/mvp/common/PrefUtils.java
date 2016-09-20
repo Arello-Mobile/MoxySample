@@ -15,7 +15,7 @@ public class PrefUtils {
 	private static final String PREF_NAME = "github";
 
 	public static SharedPreferences getPrefs() {
-		return GithubApp.get().getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+		return GithubApp.getAppComponent().getContext().getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
 	}
 
 	public static SharedPreferences.Editor getEditor() {
