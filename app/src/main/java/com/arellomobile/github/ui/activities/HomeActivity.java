@@ -16,7 +16,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.arellomobile.github.R;
-import com.arellomobile.github.mvp.common.MvpAppCompatActivity;
 import com.arellomobile.github.mvp.models.Repository;
 import com.arellomobile.github.mvp.presenters.HomePresenter;
 import com.arellomobile.github.mvp.presenters.RepositoriesPresenter;
@@ -27,6 +26,7 @@ import com.arellomobile.github.mvp.views.SignOutView;
 import com.arellomobile.github.ui.adapters.RepositoriesAdapter;
 import com.arellomobile.github.ui.fragments.DetailsFragment;
 import com.arellomobile.github.ui.views.FrameSwipeRefreshLayout;
+import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import butterknife.Bind;

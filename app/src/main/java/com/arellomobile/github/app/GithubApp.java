@@ -1,9 +1,10 @@
 package com.arellomobile.github.app;
 
+import android.app.Application;
+
 import com.arellomobile.github.di.AppComponent;
 import com.arellomobile.github.di.DaggerAppComponent;
 import com.arellomobile.github.di.modules.ContextModule;
-import com.arellomobile.mvp.MvpApplication;
 
 /**
  * Date: 18.01.2016
@@ -11,7 +12,7 @@ import com.arellomobile.mvp.MvpApplication;
  *
  * @author Yuri Shmakov
  */
-public class GithubApp extends MvpApplication {
+public class GithubApp extends Application {
 	private static AppComponent sAppComponent;
 
 	@Override

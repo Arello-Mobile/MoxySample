@@ -12,9 +12,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.arellomobile.github.R;
-import com.arellomobile.github.mvp.common.MvpAppCompatActivity;
 import com.arellomobile.github.mvp.presenters.SignInPresenter;
 import com.arellomobile.github.mvp.views.SignInView;
+import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import butterknife.Bind;
