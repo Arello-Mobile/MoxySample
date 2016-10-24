@@ -1,5 +1,5 @@
-# MoxySample
-Sample project based on [Moxy](https://github.com/Arello-Mobile/Moxy) library
+## Deprecated!
+Sample are located in base [Moxy repository](https://github.com/Arello-Mobile/Moxy/tree/master/sample-github)
 
 # License
 ```
